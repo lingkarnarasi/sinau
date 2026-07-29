@@ -1,0 +1,9 @@
+{
+  "framework": "tanstack-start",
+  "buildCommand": "vite build",
+  "installCommand": "bun install",
+  "outputDirectory": ".vercel/output",
+  "github": {
+    "silent": true
+  }
+}
