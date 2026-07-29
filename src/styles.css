@@ -1,0 +1,288 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Sinau design system.
+ * Aesthetic: parchment + ink, deep forest, muted gold. Calm, bookish, never gamified-loud.
+ * Typography: Cormorant Garamond (display) + Inter (body).
+ */
+
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400 700; font-display: swap; src: local("Cormorant Garamond"); }
+
+@theme inline {
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-parchment: var(--parchment);
+  --color-parchment-deep: var(--parchment-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-rose: var(--rose);
+  --color-flame: var(--flame);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-page: 0 1px 0 oklch(0.92 0.018 75 / 0.6), 0 24px 60px -28px oklch(0.25 0.04 60 / 0.18);
+  --shadow-leaf: 0 8px 24px -12px oklch(0.35 0.08 145 / 0.35);
+  --shadow-soft: 0 1px 2px oklch(0.25 0.04 60 / 0.06), 0 8px 28px -16px oklch(0.25 0.04 60 / 0.18);
+
+  --gradient-parchment: linear-gradient(180deg, oklch(0.985 0.012 85) 0%, oklch(0.965 0.022 80) 100%);
+  --gradient-forest: linear-gradient(135deg, oklch(0.42 0.07 150) 0%, oklch(0.32 0.06 155) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.12 75) 0%, oklch(0.66 0.13 60) 100%);
+  --gradient-flame: linear-gradient(180deg, oklch(0.82 0.16 60) 0%, oklch(0.62 0.2 35) 100%);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Parchment & ink core */
+  --parchment: oklch(0.975 0.018 85);
+  --parchment-deep: oklch(0.945 0.025 80);
+  --ink: oklch(0.22 0.02 60);
+  --ink-soft: oklch(0.42 0.025 70);
+
+  /* Forest & gold accents */
+  --forest: oklch(0.42 0.07 150);
+  --forest-deep: oklch(0.3 0.06 155);
+  --gold: oklch(0.72 0.13 70);
+  --gold-soft: oklch(0.86 0.07 80);
+  --rose: oklch(0.62 0.13 25);
+  --flame: oklch(0.68 0.18 45);
+
+  --background: var(--parchment);
+  --foreground: var(--ink);
+  --card: oklch(0.99 0.012 85);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.99 0.012 85);
+  --popover-foreground: var(--ink);
+  --primary: var(--forest);
+  --primary-foreground: oklch(0.985 0.012 85);
+  --secondary: oklch(0.93 0.025 80);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.94 0.02 82);
+  --muted-foreground: oklch(0.48 0.025 70);
+  --accent: var(--gold-soft);
+  --accent-foreground: oklch(0.32 0.05 60);
+  --destructive: oklch(0.55 0.18 28);
+  --destructive-foreground: oklch(0.985 0.012 85);
+  --border: oklch(0.88 0.025 80);
+  --input: oklch(0.9 0.022 80);
+  --ring: oklch(0.55 0.07 150);
+  --chart-1: var(--forest);
+  --chart-2: var(--gold);
+  --chart-3: var(--rose);
+  --chart-4: oklch(0.55 0.1 200);
+  --chart-5: oklch(0.6 0.12 320);
+  --sidebar: oklch(0.96 0.018 82);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--forest);
+  --sidebar-primary-foreground: oklch(0.985 0.012 85);
+  --sidebar-accent: oklch(0.93 0.025 80);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: oklch(0.88 0.025 80);
+  --sidebar-ring: var(--forest);
+}
+
+.dark {
+  --parchment: oklch(0.22 0.015 70);
+  --parchment-deep: oklch(0.18 0.015 70);
+  --ink: oklch(0.94 0.012 85);
+  --ink-soft: oklch(0.78 0.012 80);
+  --forest: oklch(0.7 0.1 150);
+  --forest-deep: oklch(0.55 0.08 155);
+  --gold: oklch(0.78 0.13 75);
+  --gold-soft: oklch(0.4 0.06 70);
+  --background: var(--parchment);
+  --foreground: var(--ink);
+  --card: oklch(0.26 0.018 70);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.26 0.018 70);
+  --popover-foreground: var(--ink);
+  --primary: var(--forest);
+  --primary-foreground: oklch(0.16 0.015 70);
+  --secondary: oklch(0.3 0.02 70);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.3 0.02 70);
+  --muted-foreground: oklch(0.7 0.015 80);
+  --accent: oklch(0.4 0.06 70);
+  --accent-foreground: oklch(0.94 0.012 85);
+  --destructive: oklch(0.65 0.18 28);
+  --destructive-foreground: oklch(0.985 0.012 85);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.6 0.08 150);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      radial-gradient(1200px 600px at 10% -10%, oklch(0.97 0.04 75 / 0.6), transparent 60%),
+      radial-gradient(1000px 500px at 110% 0%, oklch(0.96 0.05 130 / 0.35), transparent 60%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  /* Reading typography */
+  .prose-bitext p {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: var(--color-ink);
+  }
+}
+
+@layer utilities {
+  .bg-parchment { background-color: var(--color-parchment); }
+  .bg-parchment-deep { background-color: var(--color-parchment-deep); }
+  .text-ink { color: var(--color-ink); }
+  .text-ink-soft { color: var(--color-ink-soft); }
+  .bg-forest { background-color: var(--color-forest); }
+  .bg-forest-deep { background-color: var(--color-forest-deep); }
+  .text-forest { color: var(--color-forest); }
+  .text-forest-deep { color: var(--color-forest-deep); }
+  .bg-gold { background-color: var(--color-gold); }
+  .bg-gold-soft { background-color: var(--color-gold-soft); }
+  .text-gold { color: var(--color-gold); }
+  .text-rose { color: var(--color-rose); }
+  .text-flame { color: var(--color-flame); }
+  .bg-flame { background-color: var(--color-flame); }
+
+  .bg-gradient-parchment { background-image: var(--gradient-parchment); }
+  .bg-gradient-forest { background-image: var(--gradient-forest); }
+  .bg-gradient-gold { background-image: var(--gradient-gold); }
+  .bg-gradient-flame { background-image: var(--gradient-flame); }
+
+  .shadow-page { box-shadow: var(--shadow-page); }
+  .shadow-leaf { box-shadow: var(--shadow-leaf); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+
+  .paper {
+    background:
+      linear-gradient(180deg, oklch(0.99 0.012 85), oklch(0.97 0.02 82));
+    border: 1px solid oklch(0.9 0.025 80);
+    box-shadow: var(--shadow-page);
+  }
+
+  .ornament::before,
+  .ornament::after {
+    content: "";
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    vertical-align: middle;
+    margin: 0 0.75rem;
+  }
+
+  @keyframes flicker {
+    0%, 100% { transform: scale(1) rotate(-1deg); opacity: 1; }
+    50% { transform: scale(1.06) rotate(1deg); opacity: 0.92; }
+  }
+  .animate-flicker { animation: flicker 2.4s ease-in-out infinite; transform-origin: bottom center; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up { animation: fade-up 0.5s ease-out both; }
+
+  @keyframes grow {
+    from { transform: scaleY(0.6); opacity: 0.6; }
+    to { transform: scaleY(1); opacity: 1; }
+  }
+  .animate-grow { animation: grow 0.8s ease-out both; transform-origin: bottom; }
+
+  /* EPUB reader page-flip animations */
+  .epub-reader-shell {
+    transition: filter 280ms ease, transform 280ms ease, opacity 280ms ease;
+    will-change: transform, opacity, filter;
+  }
+  .epub-reader-shell.epub-flip-next {
+    animation: epub-flip-next 280ms ease-in-out;
+  }
+  .epub-reader-shell.epub-flip-prev {
+    animation: epub-flip-prev 280ms ease-in-out;
+  }
+  @keyframes epub-flip-next {
+    0%   { transform: translateX(0)    scale(1);    opacity: 1; filter: blur(0); }
+    45%  { transform: translateX(-3%)  scale(0.985); opacity: 0.55; filter: blur(1.5px); }
+    55%  { transform: translateX(3%)   scale(0.985); opacity: 0.55; filter: blur(1.5px); }
+    100% { transform: translateX(0)    scale(1);    opacity: 1; filter: blur(0); }
+  }
+  @keyframes epub-flip-prev {
+    0%   { transform: translateX(0)    scale(1);    opacity: 1; filter: blur(0); }
+    45%  { transform: translateX(3%)   scale(0.985); opacity: 0.55; filter: blur(1.5px); }
+    55%  { transform: translateX(-3%)  scale(0.985); opacity: 0.55; filter: blur(1.5px); }
+    100% { transform: translateX(0)    scale(1);    opacity: 1; filter: blur(0); }
+  }
+
+  /* Mobile: hide built-in react-reader arrows defensively */
+  .epub-reader-shell.epub-mobile button[aria-label="Previous page"],
+  .epub-reader-shell.epub-mobile button[aria-label="Next page"] {
+    display: none !important;
+  }
+}
